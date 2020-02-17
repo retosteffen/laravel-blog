@@ -8,31 +8,28 @@ use Spatie\Sluggable\SlugOptions;
 
 class Category extends Model
 {
-  use HasSlug;
-public $timestamps = false;
-  protected $table='categories';
+    use HasSlug;
+    public $timestamps = false;
+    protected $table = 'categories';
 
-  protected $fillable = [
-  'name',
-];
+    protected $fillable = [
+        'name',
+    ];
 
-  public function blog_posts() {
-      return $this->hasMany('App\BlogPost');
+    public function blog_posts()
+    {
+        return $this->hasMany('App\BlogPost');
     }
 
-
-  public function getSlugOptions() : SlugOptions
-  {
-      return SlugOptions::create()
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
           ->generateSlugsFrom('name')
           ->saveSlugsTo('slug');
-  }
-  public function getRouteKeyName()
+    }
+
+    public function getRouteKeyName()
     {
         return 'slug';
     }
-
-
-
-
 }

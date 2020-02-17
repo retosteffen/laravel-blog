@@ -2,7 +2,6 @@
 
 namespace Retosteffen\LaravelBlog;
 
-
 use Illuminate\Support\ServiceProvider;
 
 class LaravelBlogServiceProvider extends ServiceProvider
@@ -30,12 +29,11 @@ class LaravelBlogServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-blog'),
             ], 'laravel-blog:views');
 
-
-          if (! class_exists('CreateBlogsTable')) {
-          $this->publishes([
-              __DIR__.'/../database/migrations/create_blogs_table.php.stub' => database_path('migrations/'.date('Y_m_d_His',time()).'_create_blogs_table.php'),
-          ], 'laravel-blog:migrations');
-        }
+            if (! class_exists('CreateBlogsTable')) {
+                $this->publishes([
+                    __DIR__.'/../database/migrations/create_blogs_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_blogs_table.php'),
+                ], 'laravel-blog:migrations');
+            }
 
             // Publishing assets.
             /*$this->publishes([
@@ -50,7 +48,6 @@ class LaravelBlogServiceProvider extends ServiceProvider
             // Registering package commands.
             // $this->commands([]);
         }
-
     }
 
     /**
