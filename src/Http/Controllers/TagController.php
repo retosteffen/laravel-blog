@@ -3,84 +3,65 @@
 namespace Retosteffen\LaravelBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use Spatie\Tags\Tag;
 use Retosteffen\LaravelBlog\Models\LaravelBlog;
+use Spatie\Tags\Tag;
 
 class TagController
 {
+    public function index(Request $request)
+    {
+        $tags = Tag::all()->sortBy('name', SORT_NATURAL | SORT_FLAG_CASE);
 
-  public function index(Request $request)
-  {
+        return view('laravel-blog::tag.index', compact('tags'));
+    }
 
-    $tags=Tag::all()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
+    public function create(Request $request)
+    {
+        return view('laravel-blog::tag.create');
+    }
 
-    return view('laravel-blog::tag.index',compact('tags'));
-  }
+    public function store(Request $request)
+    {
+        $attributes = request()->validate([
+            'name'=>['required'],
+        ]);
 
+        $tag = Tag::findOrCreate($attributes['name']);
 
-  public function create(Request $request)
-  {
+        return redirect()->route('tags');
+    }
 
-    return view('laravel-blog::tag.create');
-  }
+    public function show($slug)
+    {
+        $tag = Tag::findFromSlug($slug);
 
-  public function store(Request $request)
-  {
+        $item = $tag;
 
-    $attributes=request()->validate([
-      'name'=>['required'],
-      ]);
+        $posts = LaravelBlog::where('published', '=', true)->withAnyTags([$tag])->get();
 
-      $tag = Tag::findOrCreate($attributes['name']);
+        return view('laravel-blog::archive', compact('item', 'posts'));
+    }
 
-      return redirect()->route('tags');
-  }
+    public function edit(Tag $tag)
+    {
+        return view('laravel-blog::tag.edit', compact('tag'));
+    }
 
+    public function update(Request $request, Tag $tag)
+    {
+        $attributes = request()->validate([
+            'name'=>['required'],
+        ]);
 
-  public function show($slug)
-  {
+        $tag->update($attributes);
 
-    $tag = Tag::findFromSlug($slug);
+        return redirect()->route('tags');
+    }
 
-    $item=$tag;
+    public function destroy(Tag $tag)
+    {
+        $tag->delete();
 
-
-
-$posts=LaravelBlog::where('published','=',true)->withAnyTags([$tag])->get();
-      return view('laravel-blog::archive',compact('item','posts'));
-  }
-
-
-
-  public function edit(Tag $tag)
-  {
-
-    return view('laravel-blog::tag.edit',compact('tag'));
-  }
-
-
-  public function update(Request $request,Tag $tag)
-  {
-    $attributes=request()->validate([
-    'name'=>['required'],
-    ]);
-
-
-    $tag->update($attributes);
-    return redirect()->route('tags');
-  }
-
-
-
-
-
-
-  public function destroy(Tag $tag)
-  {
-    $tag->delete();
-    return redirect()->route('tags');
-  }
-
-
+        return redirect()->route('tags');
+    }
 }

@@ -3,78 +3,62 @@
 namespace Retosteffen\LaravelBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
 use Retosteffen\LaravelBlog\Models\Category;
 use Retosteffen\LaravelBlog\Models\LaravelBlog;
+
 class CategoryController
 {
+    public function index(Request $request)
+    {
+        $categories = Category::all()->sortBy('name', SORT_NATURAL | SORT_FLAG_CASE);
 
-  public function index(Request $request)
-  {
+        return view('laravel-blog::category.index', compact('categories'));
+    }
 
-    $categories=Category::all()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
+    public function create(Request $request)
+    {
+        return view('laravel-blog::category.create');
+    }
 
-    return view('laravel-blog::category.index',compact('categories'));
-  }
+    public function store(Request $request)
+    {
+        $attributes = request()->validate([
+            'name'=>['required'],
+        ]);
 
+        $category = Category::create($attributes);
 
-  public function create(Request $request)
-  {
+        return redirect()->route('categories');
+    }
 
-    return view('laravel-blog::category.create');
-  }
+    public function show(Category $category)
+    {
+        $item = $category;
+        $posts = LaravelBlog::where('published', '=', true)->where('category_id', '=', $item->id)->orderBy('published_at', 'desc')->get();
 
-  public function store(Request $request)
-  {
+        return view('laravel-blog::archive', compact('item', 'posts'));
+    }
 
-    $attributes=request()->validate([
-      'name'=>['required'],
-      ]);
+    public function edit(Category $category)
+    {
+        return view('laravel-blog::category.edit', compact('category'));
+    }
 
-      $category = Category::create($attributes);
+    public function update(Request $request, Category $category)
+    {
+        $attributes = request()->validate([
+            'name'=>['required'],
+        ]);
 
-      return redirect()->route('categories');
-  }
+        $category->update($attributes);
 
+        return redirect()->route('categories');
+    }
 
-  public function show(Category $category)
-  {
+    public function destroy(Category $category)
+    {
+        $category->delete();
 
-    $item=$category;
-    $posts=LaravelBlog::where('published','=',true)->where('category_id','=',$item->id)->orderBy('published_at','desc')->get();
-      return view('laravel-blog::archive',compact('item','posts'));
-  }
-
-
-
-  public function edit(Category $category)
-  {
-    return view('laravel-blog::category.edit',compact('category'));
-  }
-
-
-  public function update(Request $request,Category $category)
-  {
-    $attributes=request()->validate([
-    'name'=>['required'],
-    ]);
-
-
-    $category->update($attributes);
-    return redirect()->route('categories');
-  }
-
-
-
-
-
-
-  public function destroy(Category $category)
-  {
-    $category->delete();
-    return redirect()->route('categories');
-  }
-
-
+        return redirect()->route('categories');
+    }
 }
