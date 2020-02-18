@@ -57,7 +57,6 @@ class LaravelBlogTest extends TestCase
     ->assertStatus(200);
     }
 
-
     public function blog_post_page_slug()
     {
 
@@ -112,7 +111,6 @@ class LaravelBlogTest extends TestCase
         $this->get('/blog/'.$post->slug)
     ->assertRedirect('/blog/'.\Carbon\Carbon::parse($post->published_at)->year.'/'.\Carbon\Carbon::parse($post->published_at)->month.'/'.\Carbon\Carbon::parse($post->published_at)->day.'/'.$post->slug);
     }
-
 
     public function blog_post_page_id()
     {
@@ -170,7 +168,6 @@ class LaravelBlogTest extends TestCase
     ->assertRedirect('/blog/'.\Carbon\Carbon::parse($post->published_at)->year.'/'.\Carbon\Carbon::parse($post->published_at)->month.'/'.\Carbon\Carbon::parse($post->published_at)->day.'/'.$post->slug);
     }
 
-
     public function blog_post_page_year_month()
     {
 
@@ -226,7 +223,6 @@ class LaravelBlogTest extends TestCase
         $this->get('/blog/'.\Carbon\Carbon::parse($post->published_at)->year.'/'.\Carbon\Carbon::parse($post->published_at)->month.'/'.$post->slug)
     ->assertRedirect('/blog/'.\Carbon\Carbon::parse($post->published_at)->year.'/'.\Carbon\Carbon::parse($post->published_at)->month.'/'.\Carbon\Carbon::parse($post->published_at)->day.'/'.$post->slug);
     }
-
 
     public function blog_post_page_year_month_day()
     {
@@ -710,14 +706,12 @@ class LaravelBlogTest extends TestCase
     ->assertStatus(200);
     }
 
-
-
     public function post_blog()
     {
-      //will fail because of App\User
-      //to make it work replace: return $this->belongsTo('App\User','user_id');
-      //with return $this->belongsTo('Retosteffen\LaravelBlog\Tests\TestUser','user_id');
-      //in LaravelBlog model
+        //will fail because of App\User
+        //to make it work replace: return $this->belongsTo('App\User','user_id');
+        //with return $this->belongsTo('Retosteffen\LaravelBlog\Tests\TestUser','user_id');
+        //in LaravelBlog model
         $user = TestUser::create([
             'name'=>'test',
             'email'=>'test@test.com',
@@ -792,7 +786,6 @@ class LaravelBlogTest extends TestCase
     ->assertStatus(302)
     ->assertRedirect('/blog_admin');
     }
-
 
     public function blog_author_show()
     {
