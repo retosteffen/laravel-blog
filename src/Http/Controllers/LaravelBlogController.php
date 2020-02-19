@@ -34,7 +34,6 @@ class LaravelBlogController
             'title'=>['required', 'regex:/^(?![0-9]*$)[a-zA-Z0-9 ]+$/'],
             'content'=>['required'],
             'excerpt'=>['max:158'],
-            'image'=>['nullable', 'url'],
         ]);
         $attributes['published'] = request()->has('published');
 
@@ -42,9 +41,12 @@ class LaravelBlogController
             $attributes['published_at'] = date('Y-m-d H:i:s');
         }
 
+        $image_path = $request->file('image')->store('laravel-blog');
+
         $blog_post = LaravelBlog::create($attributes);
         $blog_post->author()->associate(auth()->user());
         $blog_post->category()->associate(request()->get('category'));
+        $blog_post->image=$image_path;
         $blog_post->save();
 
         $tags_array = $request->get('tags');

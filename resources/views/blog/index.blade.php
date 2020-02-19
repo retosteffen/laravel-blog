@@ -26,7 +26,7 @@
 @endsection
 
 
-@section('content')
+@section('content')A
   <h1>{{__('laravel-blog::laravel-blog.blog')}}</h1>
   <hr>
 
