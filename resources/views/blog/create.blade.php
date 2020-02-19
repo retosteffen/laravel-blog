@@ -8,7 +8,7 @@
   <h1>{{__('laravel-blog::laravel-blog.create_post')}}</h1>
   <div class="container">
 
-    <form method="POST" action="{{ config('laravel-blog.route') }}">
+    <form method="POST" action="{{ config('laravel-blog.route') }}"  enctype="multipart/form-data">
       @csrf
       <div>
         <label for="title">{{__('laravel-blog::laravel-blog.title')}}</label>
@@ -36,8 +36,7 @@
         </div>
         <div>
           <label for="image">{{__('laravel-blog::laravel-blog.image')}}</label>
-          <input type="url" name="image" value="{{old('image')}}">
-          <div><small id="image_idHelp">{{__('laravel-blog::laravel-blog.image_help')}}</small></div>
+          <input type="file" name="image" id='image'/>
         </div>
         <div>
           <label for="tags_id">{{__('laravel-blog::laravel-blog.tags')}}</label>

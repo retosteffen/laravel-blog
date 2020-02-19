@@ -7,7 +7,7 @@
 @section('content')
   <h1>{{__('laravel-blog::laravel-blog.edit_post')}} "{{$blogPost->title}}"</h1>
   <div class="container">
-    <form method="POST" action="{{ config('laravel-blog.route') }}/{{$blogPost->slug}}">
+    <form method="POST" action="{{ config('laravel-blog.route') }}/{{$blogPost->slug}}" enctype="multipart/form-data">
       @csrf
       @method('PATCH')
       <div>
@@ -35,9 +35,15 @@
         </div>
         <div>
           <label for="image">{{__('laravel-blog::laravel-blog.image')}}</label>
-          <input type="url" name="image" value="{{$blogPost->image}}" size="100">
-            <div><small id="image_idHelp">{{__('laravel-blog::laravel-blog.image_help')}}</small></div>
+          <input type="file" name="image" id='image'/>
         </div>
+        @if ($blogPost->image)
+        <div>
+          <span>{{__('laravel-blog::laravel-blog.current_image')}}</span>
+          <img src="{{ asset('storage/'.$blogPost->image) }}" width='100px'>
+        </div>
+      @endif
+
         <div>
           <label for="tags_id">{{__('laravel-blog::laravel-blog.tags')}}</label>
           <select multiple id="tags_id" name="tags[]">

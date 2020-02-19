@@ -43,7 +43,7 @@
 
 @section('content')
 
-  <img src="{{$blogPost->image}}" width='100%' style="max-height:200px; object-fit:cover">
+  <img src="{{ asset('storage/'.$blogPost->image) }}" width='100%' style="max-height:200px; object-fit:cover">
   <div class='row justify-content-left'><div class='col-lg-8 col-md-12'>
     <h1>{{$blogPost->title}}</h1>
     @if (auth()->user())

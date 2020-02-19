@@ -29,6 +29,12 @@ add this to your composer.json
 composer require retosteffen/laravel-blog
 ```
 
+For image upload run
+```bash
+php artisan storage:link
+```
+
+
 requires laravel auth
 https://laravel.com/docs/6.x/authentication
 
