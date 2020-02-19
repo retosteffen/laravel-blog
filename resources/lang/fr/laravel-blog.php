@@ -49,6 +49,6 @@ return [
     'image'=>'Image',
     'excerpt_help'=>'Limité à 158 charactères. Utilisé pour la SEO. Si laissé vide, les 158 premiers caractères du contenu seront utilisés.',
     'image_help'=>"URL d'une image.",
-    'current_image'=>'Image actuelle'
+    'current_image'=>'Image actuelle',
 
 ];
