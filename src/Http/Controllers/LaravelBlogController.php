@@ -34,21 +34,21 @@ class LaravelBlogController
             'title'=>['required', 'regex:/^(?![0-9]*$)[a-zA-Z0-9 ]+$/'],
             'content'=>['required'],
             'excerpt'=>['max:158'],
-            'image' => ['image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
         $attributes['published'] = request()->has('published');
 
         if (request()->has('published')) {
             $attributes['published_at'] = date('Y-m-d H:i:s');
         }
-        $image_path=null;
-          if ($request->file('image')) {
-        $image_path = $request->file('image')->store('blog_posts','public');
-      }
+        $image_path = null;
+        if ($request->file('image')) {
+            $image_path = $request->file('image')->store('blog_posts', 'public');
+        }
         $blog_post = LaravelBlog::create($attributes);
         $blog_post->author()->associate(auth()->user());
         $blog_post->category()->associate(request()->get('category'));
-        $blog_post->image=$image_path;
+        $blog_post->image = $image_path;
         $blog_post->save();
 
         $tags_array = $request->get('tags');
@@ -171,17 +171,15 @@ class LaravelBlogController
             'title'=>['required', 'regex:/^(?![0-9]*$)[a-zA-Z0-9 ]+$/'],
             'content'=>['required'],
             'excerpt'=>['max:158'],
-            'image' => ['image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
         $attributes['published'] = request()->has('published');
 
-
         if ($request->file('image')) {
-        $image_path = $request->file('image')->store('blog_posts','public');
-      }
-      else {
-        $image_path=$blogPost->image;
-      }
+            $image_path = $request->file('image')->store('blog_posts', 'public');
+        } else {
+            $image_path = $blogPost->image;
+        }
 
         if ($blogPost->published == false && request()->has('published')) {
             $attributes['published_at'] = date('Y-m-d H:i:s');
@@ -203,7 +201,7 @@ class LaravelBlogController
 
         $blogPost->update($attributes);
 
-        $blogPost->image=$image_path;
+        $blogPost->image = $image_path;
         $blogPost->save();
 
         return redirect()->route('blog_admin');
