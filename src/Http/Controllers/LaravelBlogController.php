@@ -46,7 +46,7 @@ class LaravelBlogController
         $blog_post = LaravelBlog::create($attributes);
         $blog_post->author()->associate(auth()->user());
         $blog_post->category()->associate(request()->get('category'));
-        $blog_post->image=$image_path;
+        $blog_post->image = $image_path;
         $blog_post->save();
 
         $tags_array = $request->get('tags');
