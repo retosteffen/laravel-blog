@@ -6,7 +6,7 @@ All notable changes to `laravel-blog` will be documented in this file
 
 - initial release
 
-## 0.2.0 - upcoming
+## 0.2.0 - 2020-02-20
 
 - file upload for images
 
