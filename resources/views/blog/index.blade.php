@@ -27,7 +27,7 @@
 
 
 @section('content')
-  <h1>{{__('laravel-blog::laravel-blog.blog')}}</h1>
+  <h1>{{ config('laravel-blog.blog_name') }}</h1>
   <hr>
 
   @include('laravel-blog::posts_loop')
