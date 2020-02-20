@@ -54,7 +54,7 @@
 
     <p class="text-right">{{$blogPost->published_at}} {{__('laravel-blog::laravel-blog.by')}} {{$blogPost->author->name}}</p>
     <hr>
-    {{ $blogPost->content }}
+    {!! nl2br(e($blogPost->content)) !!}
     <hr>
     <div class="clearfix">
       @if ($blogPost->category)
