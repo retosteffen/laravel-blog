@@ -48,7 +48,7 @@
     <h1>{{$blogPost->title}}</h1>
     @if (auth()->user())
       @if (auth()->user() == $blogPost->author || auth()->user()->role === 'admin')
-        <a class='btn btn-primary btn-sm float-right' href="{{ config('laravel-blog.route') }}/{{$blogPost->slug}}/edit"><i class="fas fa-edit"></i> {{__('laravel-blog::laravel-blog.edit')}}</a>
+        <a href="{{ config('laravel-blog.route') }}/{{$blogPost->slug}}/edit">{{__('laravel-blog::laravel-blog.edit')}}</a>
       @endif
     @endif
 
