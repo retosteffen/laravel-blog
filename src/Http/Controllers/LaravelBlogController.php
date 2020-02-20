@@ -31,7 +31,7 @@ class LaravelBlogController
     {
         //$this->authorize('create',[LaravelBlog::class]);
         $attributes = request()->validate([
-            'title'=>['required', 'regex:/^(?![0-9]*$)[a-zA-Z0-9 ]+$/'],
+            'title'=>['required', 'regex:/^(?![0-9]*$)[a-zA-Z0-9 \-]+$/'],
             'content'=>['required'],
             'excerpt'=>['max:158'],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
@@ -168,7 +168,7 @@ class LaravelBlogController
     {
         //$this->authorize('update',$blogPost);
         $attributes = request()->validate([
-            'title'=>['required', 'regex:/^(?![0-9]*$)[a-zA-Z0-9 ]+$/'],
+            'title'=>['required', 'regex:/^(?![0-9]*$)[a-zA-Z0-9 \-]+$/'],
             'content'=>['required'],
             'excerpt'=>['max:158'],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
