@@ -17,7 +17,7 @@ This package is **not** a full laravel application! It only allows you to add a 
 
 You can install the package via composer:
 
-add this to your composer.json
+add this to your composer.json in your "repositories" array
 ```bash
 {
     "type": "vcs",
