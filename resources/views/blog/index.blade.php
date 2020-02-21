@@ -7,10 +7,12 @@
   <meta name="description" content="{{ config('laravel-blog.blog_name') }}">
   <meta name="keywords" content="blog">
   <meta name="author" content="{{ config('laravel-blog.blog_name') }}">
-  <link rel="canonical" href={{config('laravel-blog.route')}}>
+  <link rel="canonical" href="{{URL::current()}}">
   <meta property="og:locale" content="{{config('laravel-blog.locale')}}">
   <meta property="og:title" content="{{ config('laravel-blog.blog_name') }}">
-  <meta property="og:url" content={{config('laravel-blog.route')}}>
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="{{ config('laravel-blog.blog_description') }}">
+  <meta property="og:url" content="{{URL::current()}}">
   <meta property="og:site_name" content="{{config('laravel-blog.blog_name')}}">
   <meta property="article:publisher" content="{{config('laravel-blog.facebook_name')}}">
   <meta property="article:author" content="{{config('laravel-blog.facebook_name')}}">
@@ -18,7 +20,6 @@
   <meta name="twitter:description" content="">
   <meta name="twitter:title" content="{{ config('laravel-blog.blog_name') }}">
   <meta name="twitter:site" content="{{config('laravel-blog.twitter_handle')}}">
-  <meta name="twitter:image" content="">
   <meta name="twitter:creator" content="{{config('laravel-blog.twitter_handle')}}">
 
 

@@ -10,12 +10,12 @@
 @endif
   <meta name="keywords" content="blog, {{$blogPost->tags->pluck('name')->implode(', ')}}">
   <meta name="author" content="{{$blogPost->author->name}}">
-  <link rel="canonical" href=@include('laravel-blog::post_link',['item'=>$blogPost])>
+  <link rel="canonical" href="{{URL::current()}}">
   <meta property="og:locale" content="{{config('laravel-blog.locale')}}">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{{$blogPost->title}}">
   <meta property="og:description" content="{{$blogPost->excerpt}}">
-  <meta property="og:url" content=@include('laravel-blog::post_link',['item'=>$blogPost])>
+  <meta property="og:url" content="{{URL::current()}}">
   <meta property="og:site_name" content="{{config('laravel-blog.site_name')}}">
   <meta property="article:publisher" content="{{config('laravel-blog.facebook_name')}}">
   <meta property="article:author" content="{{config('laravel-blog.facebook_name')}}">
@@ -28,13 +28,13 @@
   <meta property="article:published_time" content="{{$blogPost->published_at}}">
   <meta property="article:modified_time" content="{{$blogPost->updated_time}}">
   <meta property="og:updated_time" content="{{$blogPost->updated_time}}">
-  <meta property="og:image" content="">
-  <meta property="og:image:secure_url" content="">
+  <meta property="og:image" content="{{ asset('storage/'.$blogPost->image) }}">
+  <meta property="og:image:secure_url" content="{{ asset('storage/'.$blogPost->image) }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:description" content="{{$blogPost->excerpt}}">
   <meta name="twitter:title" content="{{$blogPost->title}}">
   <meta name="twitter:site" content="{{config('laravel-blog.twitter_handle')}}">
-  <meta name="twitter:image" content="">
+  <meta name="twitter:image" content="{{ asset('storage/'.$blogPost->image) }}">
   <meta name="twitter:creator" content="{{config('laravel-blog.twitter_handle')}}">
 
 
