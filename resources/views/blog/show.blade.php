@@ -52,7 +52,7 @@
       @endif
     @endif
 
-    <p class="text-right">{{$blogPost->published_at}} {{__('laravel-blog::laravel-blog.by')}} {{$blogPost->author->name}}</p>
+    <p class="text-right">{{$blogPost->published_at}} {{__('laravel-blog::laravel-blog.by')}} <a href="{{ config('laravel-blog.route') }}/author/{{$blogPost->author->name}}">{{$blogPost->author->name}}</a></p>
     <hr>
     {!! nl2br(e($blogPost->content)) !!}
     <hr>
