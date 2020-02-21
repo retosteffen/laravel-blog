@@ -50,12 +50,11 @@ class LaravelBlogController
 
         $image_path = null;
         if ($request->file('image')) {
-            $original_file_name=$request->file('image')->getClientOriginalName();
-            $image_path = $request->file('image')->storeAs('blog_posts/'.$blog_post->id,$original_file_name, 'public');
+            $original_file_name = $request->file('image')->getClientOriginalName();
+            $image_path = $request->file('image')->storeAs('blog_posts/'.$blog_post->id, $original_file_name, 'public');
         }
         $blog_post->image = $image_path;
         $blog_post->save();
-
 
         $tags_array = $request->get('tags');
         $tags_names_array = [];
@@ -183,8 +182,8 @@ class LaravelBlogController
         $attributes['published'] = request()->has('published');
 
         if ($request->file('image')) {
-            $original_file_name=$request->file('image')->getClientOriginalName();
-            $image_path = $request->file('image')->storeAs('blog_posts/'.$blogPost->id,$original_file_name, 'public');
+            $original_file_name = $request->file('image')->getClientOriginalName();
+            $image_path = $request->file('image')->storeAs('blog_posts/'.$blogPost->id, $original_file_name, 'public');
         } else {
             $image_path = $blogPost->image;
         }
