@@ -43,6 +43,10 @@
           <img src="{{ asset('storage/'.$blogPost->image) }}" width='100px'>
         </div>
       @endif
+      <div>
+        <label for="alt_text">{{__('laravel-blog::laravel-blog.alt_text')}}</label>
+        <input type="text" name="alt_text" value="{{$blogPost->alt_text}}">
+      </div>
 
         <div>
           <label for="tags_id">{{__('laravel-blog::laravel-blog.tags')}}</label>

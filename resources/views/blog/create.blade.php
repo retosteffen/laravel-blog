@@ -39,6 +39,10 @@
           <input type="file" name="image" id='image'/>
         </div>
         <div>
+          <label for="alt_text">{{__('laravel-blog::laravel-blog.alt_text')}}</label>
+          <input type="text" name="alt_text" value="{{old('alt_text')}}">
+        </div>
+        <div>
           <label for="tags_id">{{__('laravel-blog::laravel-blog.tags')}}</label>
           <select multiple id="tags_id" name="tags[]">
             @foreach ($tags as $tag)

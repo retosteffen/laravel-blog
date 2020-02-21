@@ -31,6 +31,7 @@ class CreateBlogsTable extends Migration
             $table->datetime('published_at')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('image')->nullable();
+            $table->string('alt_text')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('category_id')->nullable();

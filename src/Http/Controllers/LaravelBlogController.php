@@ -35,6 +35,7 @@ class LaravelBlogController
             'content'=>['required'],
             'excerpt'=>['max:158'],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'alt_text'=>[],
         ]);
         $attributes['published'] = request()->has('published');
 
@@ -177,6 +178,7 @@ class LaravelBlogController
             'content'=>['required'],
             'excerpt'=>['max:158'],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'alt_text'=>[],
         ]);
         $attributes['published'] = request()->has('published');
 

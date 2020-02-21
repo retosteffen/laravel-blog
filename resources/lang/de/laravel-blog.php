@@ -50,5 +50,6 @@ return [
     'excerpt_help'=>'Begrenzt auf 158 Zeichen. Wird für SEO verwendet. Wenn leer, werden die ersten 158 Zeichen aus dem Inhalt verwendet.',
     'image_help'=>'URL eines Bildes',
     'current_image'=>'Aktuelles Bild',
+    'alt_text'=>'Alternativer Text für das Bild. (für SEO)',
 
 ];
