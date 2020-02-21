@@ -97,6 +97,7 @@ return [
   'route' => "/blog",
   'adminroute' => "/blog_admin",
   'blog_name'=>'My blog',
+  'blog_description'=>"A demo blog built with laravel-blog",
   'permalink' => "slug", //options are id, year/month/slug, year/month/day/slug, slug
   'locale'=>'en_US',
   'facebook_name'=>"YOUR FACEBOOK PAGE URL",
