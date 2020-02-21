@@ -25,3 +25,12 @@ All notable changes to `laravel-blog` will be documented in this file
 - twitter image and URL
 - open graph type for blog page
 - open graph description for blog page (in config)
+
+
+## 0.3.0
+- alt text for images
+- image file name is now the original image file name
+
+**blog.create and blog.edit views have been updated so if you published them and customized them, backup your version and republish the views**
+**migration has changed, so rollback that migration**
+**path for stored images has changed (now includes de post id)**
