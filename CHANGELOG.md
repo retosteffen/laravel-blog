@@ -27,7 +27,7 @@ All notable changes to `laravel-blog` will be documented in this file
 - open graph description for blog page (in config)
 
 
-## 0.3.0
+## 0.3.0 - 2020-02-21
 - alt text for images
 - image file name is now the original image file name
 
