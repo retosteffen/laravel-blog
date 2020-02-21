@@ -34,3 +34,8 @@ All notable changes to `laravel-blog` will be documented in this file
 **blog.create and blog.edit views have been updated so if you published them and customized them, backup your version and republish the views**
 **migration has changed, so rollback that migration**
 **path for stored images has changed (now includes de post id)**
+
+
+## 0.3.1 - 2020-02-21
+- open graph tags for archive page
+- link to author archive page from blog post page
