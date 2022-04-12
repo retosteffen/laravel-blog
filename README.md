@@ -13,7 +13,6 @@ SEO for blog post should be ok
 
 This package is **not** a full laravel application! It only allows you to add a simple blog to the laravel application that you already have.
 
-A website using this package is live at http://laravel-blog.retosteffen.ch, it also explains how to easily configure and add your custom styles.
 
 ## Installation
 
